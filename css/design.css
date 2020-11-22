@@ -511,10 +511,6 @@ header>img.l_float
 		width: var(--media-width-4);
 	}
 
-	header>img.l_float
-	{
-		width: 16vw;
-	}
 	h1
 	{
 		font-size: 4vw;
@@ -535,6 +531,9 @@ header>img.l_float
 
 @keyframes logo
 {
-	from{transform: rotateY(0deg);}
-	to 	{transform: rotateY(360deg);}
+	0%      {transform: rotateY(0deg);}
+	25% 	{transform: rotateY(30deg);}
+	50% 	{transform: rotateY(90deg);}
+	75% 	{transform: rotateY(30deg);}
+	100% 	{transform: rotateY(0deg);}
 }
