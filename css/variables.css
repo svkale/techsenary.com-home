@@ -1,0 +1,12 @@
+:root
+{
+	--main-color: aliceblue;
+	--main-color-2: indigo;
+	--header-shadow: black 10px 10px 25px;
+	--h1-size:3em;
+	--h2-size:1.6em;
+	--table-border: 0.1vw;
+	--table-padding: 0.4%;
+	--background-image-src: url(../images/Logo.png);
+	/*--main-color-2: #044955;*/
+}
