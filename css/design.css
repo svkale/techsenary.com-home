@@ -113,10 +113,6 @@ td,th
 	border: solid black var(--table-border);
 	padding: var(--table-padding);
 }
-header>img.l_float
-{
-	width: 160px;
-}
 .cont_automove
 {
 	animation: marquee 20s linear infinite;
