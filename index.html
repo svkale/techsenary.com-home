@@ -35,7 +35,6 @@
 					.toplogo
 					{
 						width: 160px;
-						height: 160px;
 					}
 					@media (max-width: 500px)
 					{
@@ -46,10 +45,13 @@
 						.toplogo
 						{
 							width: 20%;
-							height: 20%;
 						}
 					}
 				</style>
+				<script type="text/javascript">
+					document.getElementsByClassName('toplogo')[0].style.height=document.getElementsByClassName('toplogo')[0].offsetWidth+"px";
+					document.getElementsByClassName('toplogo')[1].style.height=document.getElementsByClassName('toplogo')[1].offsetWidth+"px";
+				</script>
 			</div>
 		</main>
 		<footer class="cont">
