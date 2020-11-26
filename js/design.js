@@ -41,12 +41,46 @@ function request(path,func)
 	xmlhttp.send();
 	return;
 }
+function request_gsheet(request_obj)
+{
+	return JSON.parse(request_obj.responseText.substring(28,request_obj.responseText.length-2)).feed.entry;
+}
 function put_hitcount(request_obj,params)
 {
-	var count=JSON.parse(request_obj.responseText.substring(28,request_obj.responseText.length-2)).feed.entry[0].content.$t;
-	params[0].innerHTML=count;
+	params[0].innerHTML=request_gsheet(request_obj)[0].content.$t;
 }
 for(var i=0;i<document.querySelectorAll("[data-ssheet-url]").length;i++)
 {
 	request(document.querySelectorAll("[data-ssheet-url]")[i].getAttribute("data-ssheet-url"),"put_hitcount",document.querySelectorAll("[data-ssheet-url]")[i]);
+}
+function request_gdoc(request_obj)
+{
+	return request_obj.responseText;
+}
+function request_gdoc_show(request_obj,params)
+{
+	var put_target=params[0];
+	var response_doc=new DOMParser().parseFromString(request_gdoc(request_obj),"text/html");
+	var response_doc_headtags=response_doc.getElementsByTagName('head')[0].children;
+	var put_data="";
+	for(var i=0;i<response_doc_headtags.length;i++)
+	{
+		if(response_doc_headtags[i].tagName=="STYLE")
+		{
+			put_data+=response_doc_headtags[i].outerHTML;
+		}
+	}
+	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
+	put_target.insertAdjacentHTML("beforeend",put_data);
+	put_target.classList.add("gdoc_contents");
+}
+function show_gdoc(request_obj,params)
+{
+	var xmlDoc = new DOMParser().parseFromString(request_gdoc(request_obj),"text/html");
+	params[0].insertAdjacentHTML("beforeend",xmlDoc.getElementsByTagName('head')[0].innerHTML);
+	params[0].insertAdjacentHTML("beforeend",xmlDoc.getElementsByTagName('body')[0].innerHTML);
+}
+for(var i=0;i<document.querySelectorAll("[data-doc-url]").length;i++)
+{
+	request(document.querySelectorAll("[data-doc-url]")[i].getAttribute("data-doc-url"),"request_gdoc_show",document.querySelectorAll("[data-doc-url]")[i]);
 }
