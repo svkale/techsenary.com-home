@@ -4,6 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>TechSenary</title>
+		<link rel="stylesheet" type="text/css" href="./css/variables.css">
+		<link rel="stylesheet" type="text/css" href="./css/design.css">
+		<link rel="stylesheet" type="text/css" href="./css/request.css">
 	</head>
 	<body>
 		<header class="cont" style="margin: 0;">
@@ -69,7 +72,7 @@
 					Mail us:- info@techsenary.com
 				</section>
 				<section class="u1 md2">
-					Hit Counter: <span id="hitcount" data-ssheet-url="https://spreadsheets.google.com/feeds/cells/1kSGN7GUGj_Dy7VSRnDu0GcH2W5GjhW5Mt_qo_X2_A8o/1/public/values?alt=json-in-script"></span> <br>
+					Hit Counter: <span id="hitcount" data-ssheet-url="https://spreadsheets.google.com/feeds/cells/1kSGN7GUGj_Dy7VSRnDu0GcH2W5GjhW5Mt_qo_X2_A8o/1/public/values?alt=json-in-script" data-sheet-no="1"></span> <br>
 					Est. 2020<br>
 				</section>
 			</address>
@@ -81,16 +84,14 @@
 			// 	console.log(message);
 			// 	window[message.data.function_name](message.data.function_parameters);
 			// }
-			// function show_count(param_array)
-			// {
-			// 	document.getElementById('hitcount').innerHTML=param_array[0];
-			// }
 
 		</script>
-		<div id="iframer" src="https://script.google.com/macros/s/AKfycbyJ3YvmcCwGkzJLAgBlJbVSMEStvdxsAS39uUWiZnETFu138Azy/exec" style="display: none;"></div>
+		<script src="https://script.google.com/macros/s/AKfycbzWXVCyY9a0l55xmB-ndVvGPe7NZ-u_e8-W2pqOl5QCIyzVgXA/exec?callback=&" type="text/javascript"></script>
+		<iframe id="iframe_gscript" class="hide" src="https://script.google.com/macros/s/AKfycbyJ3YvmcCwGkzJLAgBlJbVSMEStvdxsAS39uUWiZnETFu138Azy/exec"></iframe>
+		<script type="text/javascript">
+
+		</script>
+
 	</body>
-	<link rel="stylesheet" type="text/css" href="./css/variables.css">
-	<link rel="stylesheet" type="text/css" href="./css/design.css">
-	<link rel="stylesheet" type="text/css" href="./css/request.css">
 	<script src="./js/design.js" type="text/javascript"></script>
 </html>

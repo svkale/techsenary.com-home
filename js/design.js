@@ -1,7 +1,7 @@
 if(document.getElementsByClassName('background_img')[0])
 {
 	var bgimages=document.getElementsByClassName('background_img');
-	console.log(bgimages);
+	// console.log(bgimages);
 	for(var i=0;i<bgimages.length;i++)
 	{
 		bgimages[i].parentElement.style.position="relative";
@@ -67,7 +67,23 @@ function request_gdoc_show(request_obj,params)
 	{
 		if(response_doc_headtags[i].tagName=="STYLE")
 		{
-			put_data+=response_doc_headtags[i].outerHTML;
+			var style_output=response_doc_headtags[i].innerHTML;
+			var style_part_arr=style_output.split(",");
+			style_output="";
+			for(var i=0;i<style_part_arr.length-1;i++)
+			{
+				style_output+=style_part_arr[i]+",.gdoc_contents ";
+			}
+			style_output+=style_part_arr[style_part_arr.length-1];
+			style_part_arr=style_output.split("}");
+			style_output="";
+			for(var i=0;i<style_part_arr.length-1;i++)
+			{
+				style_output+=style_part_arr[i]+"}.gdoc_contents ";
+			}
+			style_output+=style_part_arr[style_part_arr.length-1];
+			style_output="<style type='text/css'>.gdoc_contents "+style_output+"</style>";
+			put_data+=style_output;
 		}
 	}
 	put_data+=response_doc.getElementsByTagName('body')[0].outerHTML.replace(/body/g,"div");
@@ -84,3 +100,10 @@ for(var i=0;i<document.querySelectorAll("[data-doc-url]").length;i++)
 {
 	request(document.querySelectorAll("[data-doc-url]")[i].getAttribute("data-doc-url"),"request_gdoc_show",document.querySelectorAll("[data-doc-url]")[i]);
 }
+
+
+			request("https://script.google.com/macros/s/AKfycbzWXVCyY9a0l55xmB-ndVvGPe7NZ-u_e8-W2pqOl5QCIyzVgXA/exec","log");
+			function log(request_obj)
+			{
+				console.log(request_obj);
+			}
